@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인도 위로 돌진한 차량… 반복되는 도심 사고의 경고</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Libraries -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <header class="cover" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('./assets/photo_01.png');">
+        <div class="cover-content">
+            <h1>인도 위로 돌진한 차량…<br>반복되는 도심 사고의 경고</h1>
+            <p class="byline">데이터 탐사보도팀</p>
+        </div>
+    </header>
+
+    <main>
+        <article>
+            <section class="intro">
+                <p>평일 오후, 도심 거리에서 흰색 승용차 한 대가 갑자기 인도를 넘어 건물 방향으로 돌진했다. 차량 앞부분은 심하게 파손됐고 보행로에는 범퍼와 부품 조각들이 흩어졌다. 사고 직후 경찰과 시민들이 현장을 통제했으며, 주변 상인들은 놀란 표정으로 상황을 지켜봤다. 다행히 큰 인명 피해는 없었지만, 유동 인구가 많은 시간대였다면 대형 사고로 이어질 수 있었다는 우려가 나왔다.</p>
+                <p>최근 들어 차량이 인도나 상가, 버스정류장 방향으로 돌진하는 사고는 더 이상 낯선 일이 아니다. 도심 곳곳에서 비슷한 유형의 사고가 반복되면서 시민들의 불안감도 커지고 있다.</p>
+            </section>
+
+            <section class="viz-section fade-in">
+                <h2>보행 공간 침범 사고, 최근 5년 새 급증</h2>
+                <p>교통 관련 기관의 가상 분석 자료에 따르면 최근 5년 사이 보행 공간 침범 사고는 약 30% 증가한 것으로 나타났다. 특히 상가 밀집 지역과 교차로 주변, 어린이보호구역 등 보행자 통행량이 많은 지역에서 사고 발생 빈도가 높게 나타났다.</p>
+                
+                <div class="viz-container full-bleed">
+                    <div class="viz-header">
+                        <h3>시도별 사고건수 단계구분도</h3>
+                        <p>전국 사고다발지역 표준데이터 — 17개 시도 사고건수 합계</p>
+                    </div>
+                    <div id="map" class="viz-frame"></div>
+                </div>
+
+                <p>최근 도심 교통사고는 과거와 다른 양상을 보이고 있다. 단순 차량 충돌보다 차량이 인도나 건물 방향으로 돌진하는 형태가 늘어나고 있으며, 사고 장소도 대형 교차로뿐 아니라 상가 밀집 지역과 주택가 골목 등 생활권 중심으로 확대되는 추세다.</p>
+            </section>
+
+            <section class="viz-section fade-in">
+                <p>사고 차량 유형도 다양해지고 있다. 과거에는 일반 승용차 중심이었지만 최근에는 전기차와 스포츠유틸리티차량(SUV) 비중도 증가하고 있다. 교통 당국은 초반 가속력이 강한 차량이 늘어나면서 충격 규모 역시 커지는 경향을 보인다고 분석한다.</p>
+                
+                <div class="viz-container">
+                    <div class="viz-header">
+                        <h3>17개 시도별 교통사고 현황</h3>
+                        <p>X축: 사고건수, Y축: 사망자수, 원 크기: 사상자수</p>
+                    </div>
+                    <div class="viz-frame">
+                        <canvas id="bubbleChart"></canvas>
+                    </div>
+                </div>
+
+                <p>지역별 차이도 나타난다. 수도권은 사고 건수가 많았고, 지방 중소도시는 최근 증가율이 두드러졌다. 일부 지자체에서는 상가 앞 인도나 횡단보도 주변에 차량 진입 방지 시설 설치를 확대하고 있지만, 여전히 많은 지역은 차량과 보행 공간의 경계가 충분하지 않은 상황이다.</p>
+            </section>
+
+            <section class="viz-section fade-in">
+                <h2>페달 오조작·고령 운전자·도시 구조가 복합 작용</h2>
+                <p>전문가들은 가장 큰 원인으로 페달 오조작과 운전자 주의 분산을 꼽는다. 브레이크 대신 가속페달을 밟는 사고가 반복되고 있으며, 스마트폰 사용이나 내비게이션 조작도 사고 위험을 높인다는 것이다.</p>
+                
+                <figure class="wide-photo">
+                    <img src="./assets/photo_02.jpg" alt="도심 도로 환경">
+                    <figcaption>반복되는 도심 사고는 도시 구조와 운전자 요인이 복합적으로 작용한다.</figcaption>
+                </figure>
+
+                <p>고령 운전자 증가 역시 중요한 원인으로 지목된다. 교통안전 전문가들은 “고령층 운전자 자체를 문제로 볼 수는 없지만 순간 판단 속도와 반응 시간 저하 가능성은 분명 존재한다”고 설명했다.</p>
+                
+                <blockquote class="accent-quote">
+                    국내 도심은 차량 흐름 중심으로 설계된 곳이 많아 보행자를 보호할 물리적 장치가 부족하다. 차량이 인도로 진입하지 못하도록 하는 안전시설 확대가 필요하다.
+                </blockquote>
+
+                <p>도시 구조 문제를 지적하는 목소리도 나온다. 한 교통공학 교수는 위와 같이 보행 안전을 위한 물리적 장치의 필요성을 강조했다.</p>
+            </section>
+
+            <section class="conclusion fade-in">
+                <h2>“차량보다 사람 우선” 교통체계 전환 필요</h2>
+                <p>전문가들은 사고 다발 지역을 중심으로 차량 진입 방지용 볼라드와 과속 저감 시설을 확대해야 한다고 강조한다. 또한 고령 운전자 안전교육 강화와 첨단 운전자 보조 시스템 보급 확대도 필요하다고 제안한다.</p>
+                <p>무엇보다 차량 이동 효율보다 보행자 안전을 우선하는 방향으로 도시 교통체계를 전환해야 한다는 지적이 나온다. 반복되는 도심 돌진 사고는 단순한 개인 실수 문제가 아니라, 도시 안전 시스템 전반을 다시 점검해야 한다는 경고라는 것이다.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 데이터 탐사보도 프로젝트</p>
+            <p>본 페이지는 제공된 가상 데이터를 바탕으로 제작되었습니다.</p>
+        </div>
+    </footer>
+
+    <script src="./index.js"></script>
+</body>
+</html>
